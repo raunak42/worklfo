@@ -1,6 +1,6 @@
 import { Lucia } from "lucia";
 import { MongodbAdapter } from "@lucia-auth/adapter-mongodb";
-import { Session, User, UserDoc } from "./lib/db";
+import { Session, User, UserDoc } from "db";
 import { BASE_URL } from "./lib/constants";
 import { Google } from "arctic";
 import { User as userType, Session as sessionType } from "lucia";

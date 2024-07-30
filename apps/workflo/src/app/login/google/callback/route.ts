@@ -3,7 +3,7 @@ import { google, lucia } from "@/auth";
 import { cookies } from "next/headers";
 import { OAuth2RequestError } from "arctic";
 import { generateIdFromEntropySize } from "lucia";
-import { User } from "@/lib/db";
+import { User } from "db";
 
 export async function GET(request: Request): Promise<Response> {
     const url = new URL(request.url);

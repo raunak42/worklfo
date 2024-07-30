@@ -1,6 +1,5 @@
 import { lucia, validateRequest } from "@/auth";
 import { LoginCard } from "@/components/LoginCard/LoginCard";
-import { User } from "@/lib/db";
 import { generateId } from "lucia";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -8,6 +7,7 @@ import bcrypt from "bcryptjs";
 import { emailInput, fullNameInput, passwordInput } from "@/lib/zod";
 import { checkUserInDb } from "./actions";
 import { pixelAvatars } from "@/lib/randomAvatars";
+import { User } from "db";
 
 export default async function Home() {
    

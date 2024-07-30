@@ -1,6 +1,6 @@
 "use server"
-import { User } from "@/lib/db";
 import bcrypt from "bcryptjs";
+import { User } from "db";
 
 
 export const checkUserInDb = async (email: string) => {

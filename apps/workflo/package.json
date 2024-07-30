@@ -19,7 +19,8 @@
     "nextjs-toploader": "^1.6.12",
     "oslo": "^1.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "db":"*"
   },
   "devDependencies": {
     "@types/node": "^20",
