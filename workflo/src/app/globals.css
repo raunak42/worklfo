@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-bg {
+    background-image: linear-gradient(to top, #ac96de, #bfb0e8, #d3caf0, #e9e5f8, #ffffff);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
