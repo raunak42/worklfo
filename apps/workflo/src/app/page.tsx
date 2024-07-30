@@ -7,7 +7,7 @@ import bcrypt from "bcryptjs";
 import { emailInput, fullNameInput, passwordInput } from "@/lib/zod";
 import { checkUserInDb } from "./actions";
 import { pixelAvatars } from "@/lib/randomAvatars";
-import { User } from "db";
+import { User } from "@/lib/db";
 
 export default async function Home() {
    
