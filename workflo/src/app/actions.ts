@@ -1,5 +1,5 @@
 "use server"
-import { User } from "@/lib/db";
+import { Task, User } from "@/lib/db";
 import bcrypt from "bcryptjs";
 
 
@@ -8,7 +8,7 @@ export const checkUserInDb = async (email: string) => {
         email: email
     });
 
-    return existingUser;    
+    return existingUser;
 }
 
 export const verifyPassword = async (password: string | undefined, hashedPassword: string): Promise<boolean> => {
@@ -18,3 +18,10 @@ export const verifyPassword = async (password: string | undefined, hashedPasswor
     const verifiedPassword = await bcrypt.compare(password, hashedPassword)
     return verifiedPassword;
 }
+
+
+
+    // await User.updateOne(
+    //     { email: "raunakarunlanjewar@gmail.com" },
+    //     { $set: { tasks:tasks } }
+    // );

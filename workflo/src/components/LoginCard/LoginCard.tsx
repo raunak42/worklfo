@@ -53,7 +53,7 @@ export const LoginCard: React.FC<LoginCardProps> = ({
   };
 
   return (
-    <div className="w-full h-full  flex flex-col items-center gap-[38px] ">
+    <div  className="w-full h-full  flex flex-col items-center gap-[38px] ">
       <h1
         className={`text-[#4534ac] text-center mt-[32px] w-[50%] h-fit text-7xl transition-all duration-200 ${
           isVisible ? " -translate-y-6 opacity-100" : "opacity-0"

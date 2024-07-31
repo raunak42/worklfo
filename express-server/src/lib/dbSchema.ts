@@ -10,12 +10,24 @@ export interface UserDoc {
     email: string;
     hashedPassword?: string
     avatar: string
+    tasks: Task[]
 }
 
 export interface SessionDoc {
     _id: string;
     expires_at: Date;
     user_id: string;
+}
+
+export interface Task {
+    _id: string;
+    title: string;
+    description: string;
+    priority: "Low" | "Medium" | "Urgent";
+    status: "To do" | "In progress" | "Under review" | "Finished";
+    createdAt: Date;
+    deadline: Date;
+    favourite: boolean
 }
 
 export const client = new MongoClient(process.env.MONGODB_URI!, {

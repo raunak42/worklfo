@@ -8,12 +8,12 @@ import { emailInput, fullNameInput, passwordInput } from "@/lib/zod";
 import { checkUserInDb } from "./actions";
 import { pixelAvatars } from "@/lib/randomAvatars";
 import { User } from "@/lib/db";
+import { tasks } from "../../example-tasks";
 
 export default async function Home() {
-   
-  const {session, user} = await validateRequest()
-  if(session){
-    return redirect("/dashboard")
+  const { session, user } = await validateRequest();
+  if (session) {
+    return redirect("/home");
   }
   return (
     //In the LoginCard, continuing with google does not trigger form action because google button is not a button but <a/> tag.
@@ -23,7 +23,7 @@ export default async function Home() {
           isFullNameInput={true}
           altText="Already have an account?"
           altLink="Login."
-          href="/Login"
+          href="/login"
           buttonText="Signup"
         />
       </div>
@@ -69,11 +69,12 @@ const signupAndStartSession = async (formData: FormData): Promise<any> => {
     hashedPassword: hashedPassword,
     _id: userId,
     avatar: randomAvatar,
+    tasks: tasks,
   });
 
   // start session
   const session = await lucia.createSession(userId, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
   cookies().set("auth_session", sessionCookie.value, sessionCookie.attributes);
-  return redirect("/dashboard");
+  return redirect("/home");
 };

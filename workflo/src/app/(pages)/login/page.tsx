@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 export default async function Page() {
   const { session, user } = await validateRequest();
   if (session) {
-    return redirect("/dashboard");
+    return redirect("/home");
   }
   return (
     <form action={loginAndStartSession}>
@@ -63,5 +63,5 @@ const loginAndStartSession = async (formData: FormData) => {
   const session = await lucia.createSession(existingUser._id, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
   cookies().set("auth_session", sessionCookie.value, sessionCookie.attributes);
-  return redirect("/dashboard");
+  return redirect("/home");
 };

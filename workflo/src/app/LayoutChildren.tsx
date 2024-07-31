@@ -1,6 +1,8 @@
 "use client";
 
 import { Navbar } from "@/components/Navbar/Navbar";
+import { SessionNavbar } from "@/components/Navbar/SessionNavbar";
+import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Session, User } from "lucia";
 import { usePathname } from "next/navigation";
 import NextTopLoader from "nextjs-toploader";
@@ -18,15 +20,12 @@ export const LayoutChildren: React.FC<LayoutChildrenProps> = ({
   const pathname = usePathname();
 
   return (
-    <div className={`${pathname === "/" && "gradient-bg"}`}>
+    <div className={`${(pathname === "/"||pathname==="/login") && "gradient-bg"}`}>
       <NextTopLoader color="#4534ac" showSpinner={false} height={4} />
       {!session && <Navbar />}
-      {session && (
-        <div className="w-[260px] h-full fixed l-0 border-r flex flex-col">
-          <h1>{user?.username}</h1>
-        </div>
-      )}
-      <div className={`${session && "ml-[260px]"}`}>{children}</div>
+      {session&&<SessionNavbar/>}
+      {session && <Sidebar session={session} user={user} />}
+      <div className={`${session && "ml-[260px] mt-[70px]"}`}>{children}</div>
     </div>
   );
 };

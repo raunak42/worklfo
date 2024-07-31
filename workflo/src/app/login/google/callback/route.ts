@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { OAuth2RequestError } from "arctic";
 import { generateIdFromEntropySize } from "lucia";
 import { User } from "@/lib/db";
+import { tasks } from "../../../../../example-tasks";
 
 export async function GET(request: Request): Promise<Response> {
     const url = new URL(request.url);
@@ -42,7 +43,7 @@ export async function GET(request: Request): Promise<Response> {
             return new Response(null, {
                 status: 302,
                 headers: {
-                    Location: "/dashboard"
+                    Location: "/home"
                 }
             });
         }
@@ -54,7 +55,8 @@ export async function GET(request: Request): Promise<Response> {
             fullName: googleUser.name,
             providerId: parseFloat(googleUser.id),
             email: googleUser.email,
-            avatar: googleUser.picture
+            avatar: googleUser.picture,
+            tasks: tasks
         })
 
         const session = await lucia.createSession(userId, {});
@@ -63,7 +65,7 @@ export async function GET(request: Request): Promise<Response> {
         return new Response(null, {
             status: 302,
             headers: {
-                Location: "/dashboard"
+                Location: "/home"
             }
         });
     } catch (e) {

@@ -12,7 +12,7 @@ export const Navbar: React.FC = () => {
     <div className="w-full py-[24px] px-[64px] flex flex-row items-center justify-between   ">
       <Image width={180} height={100} alt="logo" src={"/logo.svg"} />
       <Link
-        href={pathname==="/Login"?"/":"/Login"}
+        href={pathname==="/login"?"/":"/login"}
         className={` bg-[#4534ac] text-[#ffffff] w-[140px] h-[44px] rounded-full font-semibold ${
           !loginCLicked && "hover:-translate-y-1"
         } transition-all duration-200 flex items-center justify-center`}
@@ -25,7 +25,7 @@ export const Navbar: React.FC = () => {
             src={"/spinner-light.svg"}
             className="animate-spin"
           />
-        ) : pathname === "/Login" ? (
+        ) : pathname === "/login" ? (
           <h1>Signup</h1>
         ) : (
           <h1>Login</h1>
